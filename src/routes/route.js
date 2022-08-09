@@ -27,6 +27,39 @@ router.get('/test-me', function (req, res) {
 router.get('/test-you', function(req, res){
     res.send('This is the second routes implementation')
 })
+ //First Problem
+
+router.get('/movies',function(req,res){
+    let myMovies = ["KGF-chapter 2","Major","Uri","Border"]
+    console.log(myMovies)
+    res.send(myMovies)
+})
+
+
+//Program No 2
+
+router.get('/movies/:indexNumber',function(req,res){
+    let myMovies = ["KGF-chapter 2","Major","Uri-The Surgical Strike","Border"]
+    let requestParams = req.params
+    let index = requestParams.indexNumber
+    if(index < myMovies.length){
+       res.send(myMovies[index])
+    }
+    else{
+        res.send("Enter Valid Number")
+    }
+   
+    res.send("this is code")
+})
+
+
+//Program No 3
+
+router.get('/films',function(req,res){
+    const film=[{'id':1,'name':'KGF-Chapter 2'},{'id':2,'name':'Major'},{'id':3,'name':'Uri-The Surgical Strike'},{'id':4,'name':'Border'}]
+    res.send(film)
+})
+
 
 router.get('/give-me-students-data',function(req, res){
 
