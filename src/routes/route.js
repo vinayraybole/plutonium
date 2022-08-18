@@ -1,39 +1,36 @@
 const express = require('express');
 const router = express.Router();
-// const UserModel= require("../models/userModel.js")
+const UserModel= require("../models/userModel.js")
 const UserController= require("../controllers/authorController")
-const BookController= require("../controllers/bookController")
-
+ const BookController= require("../controllers/bookController")
 const authorcreate=require ("../models/authorModel.js")
 const bookcreate=require ("../models/bookModel.js")
-router.get("/test-me", function (req, res) {
-    res.send("My first ever api!")
-})
+const createauthor=require ("../controllers/authorcontroller")
+ const createbook=require ("../controllers/bookController")
 
 
-router.post("/createbook",async function (req,res){
-  const user=await bookcreate.create(req.body)
- res.send(user)
+// router.get("/test-me", function (req, res) {
 
-})
-router.get ("/getcreatebook",async function(req,res) {
-const user=await bookcreate.find()
-res.send(user)
-})
-router.post("/createUser", UserController.createUser  )
+//     res.send("My first ever api!")
+// })
 
-router.get("/getUsersData", UserController.getUsersData)
+router.post ("/author",createauthor.authordata)
 
-router.post("/createBook", BookController.createBook  )
+// router.post ("/book",createbook.bookdata)
 
-router.get("/getBooksData", BookController.getBooksData)
 
-router.post("/updateBooks", BookController.updateBooks)
-router.post("/deleteBooks", BookController.deleteBooks)
+
+
+// router.post("/createUser", UserController.createUser  )
+// router.get("/getUsersData", UserController.getUsersData)
+// router.post("/createBook", BookController.createBook  )
+// router.get("/getBooksData", BookController.getBooksData)
+// router.post("/updateBooks", BookController.updateBooks)
+// router.post("/deleteBooks", BookController.deleteBooks)
 
 //MOMENT JS
-const moment = require('moment');
-router.get("/dateManipulations", function (req, res) {
+// const moment = require('moment');
+// router.get("/dateManipulations", function (req, res) {
     
     // const today = moment();
     // let x= today.add(10, "days")
@@ -41,13 +38,13 @@ router.get("/dateManipulations", function (req, res) {
     // let validOrNot= moment("29-02-1991", "DD-MM-YYYY").isValid()
     // console.log(validOrNot)
     
-    const dateA = moment('01-01-1900', 'DD-MM-YYYY');
-    const dateB = moment('01-01-2000', 'DD-MM-YYYY');
+    // const dateA = moment('01-01-1900', 'DD-MM-YYYY');
+    // const dateB = moment('01-01-2000', 'DD-MM-YYYY');
 
-    let x= dateB.diff(dateA, "days")
-    console.log(x)
+    // let x= dateB.diff(dateA, "days")
+    // console.log(x)
 
-    res.send({ msg: "all good"})
-})
+    // res.send({ msg: "all good"})
+// })
 
 module.exports = router;
