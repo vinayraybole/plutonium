@@ -20,6 +20,19 @@ const mid4= function ( req, res, next) {
     next()
 }
 
+
+const middleware = function(req,res,next){
+    const user = req.headers.isfreeappuser
+    if(!user){
+        return res.send({message:"The hearders are mandatory" })
+    }
+    req.body["isFreeAppUser"]=user
+    next()
+}
+module.exports.middleware= middleware
+
+
+
 module.exports.mid1= mid1
 module.exports.mid2= mid2
 module.exports.mid3= mid3
